@@ -1,0 +1,49 @@
+{
+  "users": {
+    "be7eaa76-5f53-4585-9604-fb14de06c202": {
+      "id": "be7eaa76-5f53-4585-9604-fb14de06c202",
+      "email": "phantomzyrex@gmail.com",
+      "passwordHash": "f41de5e5b40642722de1e5dc58f7dd19:761d0c3f62f2729172d99076c3d02f9da3856f4f1a98ed727d46e1be3cc8def1ff2e9ab07837918013c152c027cf20d41a4fcc4fadbaf882efe99249aa5191ca",
+      "handle": "phantomzyrex",
+      "emailVerified": false,
+      "verificationToken": "8389741937ff0c5773dbd8f74a338180",
+      "createdAt": "2026-06-08T16:36:43.810Z"
+    }
+  },
+  "bookmarks": {
+    "95ec3651-e73a-4ceb-8724-5da294b23e0d": {
+      "id": "95ec3651-e73a-4ceb-8724-5da294b23e0d",
+      "userId": "be7eaa76-5f53-4585-9604-fb14de06c202",
+      "title": "kabhi kabhi aditi song",
+      "url": "https://www.youtube.com/watch?v=AX7t8ZwroHQ&list=RDAX7t8ZwroHQ&start_radio=1",
+      "isPublic": true,
+      "category": "songs",
+      "position": 1,
+      "createdAt": "2026-06-08T16:37:01.258Z"
+    },
+    "b65d8887-b66e-4965-b32c-313cdd9c7ab1": {
+      "id": "b65d8887-b66e-4965-b32c-313cdd9c7ab1",
+      "userId": "be7eaa76-5f53-4585-9604-fb14de06c202",
+      "title": "King - Tu Aake Dekhle",
+      "url": "https://www.youtube.com/watch?v=A66TYFdz8YA&list=RDA66TYFdz8YA&start_radio=1",
+      "isPublic": true,
+      "category": "songs",
+      "position": 0,
+      "createdAt": "2026-06-08T16:37:47.166Z"
+    }
+  },
+  "emails": [
+    {
+      "id": "d6c74dc9-5ab5-4c1b-991b-ba079c29a256",
+      "toEmail": "phantomzyrex@gmail.com",
+      "subject": "Welcome to Personal Bookmarks! Confirm Your Email",
+      "body": "Hi @phantomzyrex,\n\nWelcome to Personal Bookmarks — your neat, custom link sharing tree and reader inbox!\n\nTo activate your account and start adding bookmarks, please confirm your email address by clicking the link below:\n\n👉 [Confirm Email Link]\n(Use verification code: 8389741937ff0c5773dbd8f74a338180)\n\nThank you for signing up!\n- Personal Bookmarks Team",
+      "token": "8389741937ff0c5773dbd8f74a338180",
+      "status": "sent",
+      "createdAt": "2026-06-08T16:36:43.810Z"
+    }
+  ],
+  "tokens": {
+    "33d3d9baa67ba55e1198e6b7b7666051d506469a8f6a5cf0f85eada00b05adf2": "be7eaa76-5f53-4585-9604-fb14de06c202"
+  }
+}
