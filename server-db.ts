@@ -3,7 +3,9 @@ import path from 'path';
 import crypto from 'crypto';
 import { User, Bookmark, EmailNotification } from './src/types';
 
-const DB_FILE = path.join(process.cwd(), 'data-store.json');
+const DB_FILE = process.env.VERCEL
+  ? path.join('/tmp', 'data-store.json')
+  : path.join(process.cwd(), 'data-store.json');
 
 interface Schema {
   users: Record<string, User>;         // userId -> User
@@ -26,6 +28,14 @@ class ServerDatabase {
 
   private load() {
     try {
+      if (process.env.VERCEL && !fs.existsSync(DB_FILE)) {
+        const seedFile = path.join(process.cwd(), 'data-store.json');
+        if (fs.existsSync(seedFile)) {
+          fs.copyFileSync(seedFile, DB_FILE);
+          console.log('Seeded database to /tmp/data-store.json from', seedFile);
+        }
+      }
+
       if (fs.existsSync(DB_FILE)) {
         const raw = fs.readFileSync(DB_FILE, 'utf-8');
         const parsed = JSON.parse(raw);

@@ -3,21 +3,14 @@ import path from 'path';
 import { createServer as createViteServer } from 'vite';
 import { dbService } from './server-db';
 
-interface AuthenticatedRequest extends Request {
+export interface AuthenticatedRequest extends Request {
   user?: any;
 }
 
-async function startServer() {
+export function createApiApp() {
   const app = express();
-  const PORT = 3000;
 
   app.use(express.json());
-
-  // Log requests for diagnostic purposes
-  app.use((req, res, next) => {
-    console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
-    next();
-  });
 
   // Bearer Token Authn Middleware
   const authMiddleware = (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
@@ -238,6 +231,19 @@ async function startServer() {
     res.json({ emails: dbService.getEmailLogs() });
   });
 
+  return app;
+}
+
+async function startServer() {
+  const app = createApiApp();
+  const PORT = 3000;
+
+  // Log requests for diagnostic purposes in local mode
+  app.use((req, res, next) => {
+    console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`);
+    next();
+  });
+
   // --- Vite & SPA Static Serves Middleware ---
   if (process.env.NODE_ENV !== 'production') {
     const vite = await createViteServer({
@@ -258,6 +264,8 @@ async function startServer() {
   });
 }
 
-startServer().catch((err) => {
-  console.error('Fatal Server Boot Error:', err);
-});
+if (!process.env.VERCEL) {
+  startServer().catch((err) => {
+    console.error('Fatal Server Boot Error:', err);
+  });
+}
