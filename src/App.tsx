@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { apiUrl } from './api';
 import WelcomeView from './components/WelcomeView';
 import Dashboard from './components/Dashboard';
 import ProfileView from './components/ProfileView';
@@ -60,7 +61,7 @@ export default function App() {
       const storedToken = localStorage.getItem('auth_token');
       if (storedToken) {
         try {
-          const res = await fetch('/api/auth/me', {
+          const res = await fetch(apiUrl('/api/auth/me'), {
             headers: {
               'Authorization': `Bearer ${storedToken}`
             }
@@ -109,7 +110,7 @@ export default function App() {
   const handleLogout = async () => {
     try {
       if (token) {
-        await fetch('/api/auth/logout', {
+        await fetch(apiUrl('/api/auth/logout'), {
           method: 'POST',
           headers: {
             'Authorization': `Bearer ${token}`
@@ -129,7 +130,7 @@ export default function App() {
   const refreshUserStatus = async () => {
     if (!token) return;
     try {
-      const res = await fetch('/api/auth/me', {
+      const res = await fetch(apiUrl('/api/auth/me'), {
         headers: {
           'Authorization': `Bearer ${token}`
         }

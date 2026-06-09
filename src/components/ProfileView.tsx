@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { apiUrl } from '../api';
 import { ExternalLink, BookOpen, Sparkles, User, ShieldAlert, ArrowLeft, PlusCircle } from 'lucide-react';
 import { Bookmark } from '../types';
 
@@ -50,7 +51,7 @@ export default function ProfileView({ handle, onNavigateHome, onNavigateRegister
       setLoading(true);
       setErrorMess(null);
       try {
-        const res = await fetch(`/api/profile/${handle}`);
+        const res = await fetch(apiUrl(`/api/profile/${handle}`));
         const data = await res.json();
         if (res.ok) {
           setProfile(data.user);

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, FormEvent } from 'react';
+import { apiUrl } from '../api';
 import { 
   LogOut, Globe, Lock, ExternalLink, Plus, Edit2, Trash2, Check, X, 
   Copy, Link, Mail, CheckCircle, Sparkles, FolderHeart, ShieldCheck,
@@ -152,7 +153,7 @@ export default function Dashboard({
     setDragOverBookmarkId(null);
 
     try {
-      const res = await fetch('/api/bookmarks/reorder', {
+      const res = await fetch(apiUrl('/api/bookmarks/reorder'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -171,7 +172,7 @@ export default function Dashboard({
   const fetchBookmarks = async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/bookmarks', {
+      const res = await fetch(apiUrl('/api/bookmarks'), {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -201,7 +202,7 @@ export default function Dashboard({
     setErrorMess(null);
 
     try {
-      const res = await fetch('/api/bookmarks', {
+      const res = await fetch(apiUrl('/api/bookmarks'), {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -246,7 +247,7 @@ export default function Dashboard({
     setErrorMess(null);
 
     try {
-      const res = await fetch(`/api/bookmarks/${id}`, {
+      const res = await fetch(apiUrl(`/api/bookmarks/${id}`), {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -277,7 +278,7 @@ export default function Dashboard({
     setErrorMess(null);
 
     try {
-      const res = await fetch(`/api/bookmarks/${id}`, {
+      const res = await fetch(apiUrl(`/api/bookmarks/${id}`), {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

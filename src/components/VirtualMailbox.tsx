@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { apiUrl } from '../api';
 import { Mail, ArrowRight, CheckCircle, RefreshCw, Layers, ShieldAlert, Sparkles } from 'lucide-react';
 import { EmailNotification } from '../types';
 
@@ -19,7 +20,7 @@ export default function VirtualMailbox({ onVerifySuccess, triggerRefreshTrigger 
   const fetchEmails = async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/emails');
+      const res = await fetch(apiUrl('/api/emails'));
       if (res.ok) {
         const data = await res.json();
         // Sort descending by time
@@ -42,7 +43,7 @@ export default function VirtualMailbox({ onVerifySuccess, triggerRefreshTrigger 
   const handleVerify = async (token: string) => {
     setVerifyingToken(token);
     try {
-      const res = await fetch('/api/auth/verify', {
+      const res = await fetch(apiUrl('/api/auth/verify'), {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token })
