@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import crypto from 'crypto';
-import { User, Bookmark, EmailNotification } from './src/types';
+import { User, Bookmark, EmailNotification } from '../src/types';
 import postgres from 'postgres';
 
 const DB_FILE = process.env.VERCEL
@@ -650,4 +650,3 @@ class ServerDatabase {
 }
 
 export const dbService = new ServerDatabase();
-
