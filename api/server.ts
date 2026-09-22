@@ -4,7 +4,7 @@ dotenv.config();
 import express, { Request, Response, NextFunction } from 'express';
 import path from 'path';
 import { createServer as createViteServer } from 'vite';
-import { dbService } from './server-db';
+import { dbService } from './server-db.js';
 
 export interface AuthenticatedRequest extends Request {
   user?: any;
